@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Bools")]
     [SerializeField] protected bool _standBy;
     [SerializeField] protected bool _isWalking;
-    [SerializeField] protected bool _isDeath;
+    [SerializeField] public bool _isDeath;
 
     [Header("State Machine")]
     [SerializeField] protected EnemyState _enemyState;
@@ -121,12 +121,12 @@ public abstract class Enemy : MonoBehaviour
                 break;
             case EnemyPart.RUpperArm:
                 _life -= 2;
-                if (_life < 8) DeleteBodyPart(EnemyPart.LForeArm);
+                if (_life < 8 && _bodyParts.ContainsKey(EnemyPart.RForeArm)) DeleteBodyPart(EnemyPart.RForeArm);
 
                 break;
             case EnemyPart.LUpperArm:
                 _life -= 2;
-                if (_life < 8) DeleteBodyPart(EnemyPart.LForeArm);
+                if (_life < 8 && _bodyParts.ContainsKey(EnemyPart.LForeArm)) DeleteBodyPart(EnemyPart.LForeArm);
 
                 break;
             case EnemyPart.RForeArm:
