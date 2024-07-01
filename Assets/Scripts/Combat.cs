@@ -14,6 +14,7 @@ public class Combat : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
+        _canvas.UpdateCanvas(5, _bullets);
     }
 
     void Update()

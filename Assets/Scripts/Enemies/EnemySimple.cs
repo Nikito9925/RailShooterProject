@@ -85,6 +85,7 @@ public class EnemySimple : Enemy
         {
             _railController._enemyList.Remove(this);
         }
+
     }
 
     public override void UpdateState()
