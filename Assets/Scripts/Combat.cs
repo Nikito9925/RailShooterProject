@@ -7,6 +7,9 @@ public class Combat : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _crossHair;
+    [SerializeField] private int _bullets;
+
+    [SerializeField] private CanvasController _canvas;
 
     void Start()
     {
@@ -17,9 +20,13 @@ public class Combat : MonoBehaviour
     {
         MoveCrosshair();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _bullets > 0)
         {
             Shoot();
+        }
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Reload();
         }
     }
 
@@ -60,5 +67,15 @@ public class Combat : MonoBehaviour
 
 
         }
+        _bullets--;
+        _canvas.UpdateCanvas(5, _bullets);
     }
+
+    public void Reload()
+    {
+        _bullets = 7;
+        _canvas.UpdateCanvas(5, _bullets);
+    }
+
+
 }
