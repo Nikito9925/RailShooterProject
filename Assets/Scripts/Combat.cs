@@ -22,9 +22,10 @@ public class Combat : MonoBehaviour
     {
         MoveCrosshair();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _bullets > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Shoot();
+            if (_bullets <= 0) _audioController.PlayReloadVoiceSound();
+            else Shoot();
         }
         if(Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -72,6 +73,7 @@ public class Combat : MonoBehaviour
         _bullets--;
         _canvas.UpdateCanvas(5, _bullets);
         _audioController.PlayShootSound();
+        if(_bullets <= 0) _audioController.PlayReloadVoiceSound();
     }
 
     public void Reload()

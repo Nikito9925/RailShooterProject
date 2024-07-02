@@ -9,8 +9,10 @@ public class EnemyKnive : Enemy
     [SerializeField] private bool _hasKnives;
     [SerializeField] private float _throwDistance;
     [SerializeField] private GameObject _proyectile;
+    [SerializeField] private EnemyAudioController _audioController;
     private void Start()
     {
+        _isDeath = false;
         _life = 10;
         _hasKnives = true;
         _agent.SetDestination(_player.position);
@@ -60,9 +62,9 @@ public class EnemyKnive : Enemy
                 break;
         }
 
-        if(_life <= 0)
+        if(_life <= 0 && !_isDeath)
         {
-            //Debug.Log("LIFE == 0");
+            _isDeath = true;
             Death();
         }
     }
@@ -83,20 +85,21 @@ public class EnemyKnive : Enemy
 
     public override void Death()
     {
-        if(_nodeController == null) //Si no pertenece a un nodo
-        {
-            Destroy(this.gameObject);
-        }
-        else if(!(_nodeController == null) && _nodeController._enemyList.Contains(this.gameObject)) //Si pertenece a un nodo, y esta en la lista
-        {
-            _nodeController._enemyList.Remove(this.gameObject);
-            Destroy(this.gameObject);
-        }
+        _audioController.PlayEnemyDeathSound();
 
-        if(_railController._enemyList.Contains(this))
+        if (_railController._enemyList.Contains(this))
         {
             _railController._enemyList.Remove(this);
         }
+        if (_nodeController != null && _nodeController._enemyList.Contains(this.gameObject)) //Si pertenece a un nodo, y esta en la lista
+        {
+            _nodeController._enemyList.Remove(this.gameObject);
+        }
+
+        _standBy = true;
+        _animator.SetTrigger("Death");
+
+        Invoke("DestroyEnemy", 2f);
     }
 
     public override void UpdateState()

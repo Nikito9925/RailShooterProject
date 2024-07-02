@@ -24,7 +24,7 @@ public class AudioController : MonoBehaviour
     }
     public void PlayShootSound()
     {
-        audioSource.PlayOneShot(shootSound);
+        audioSource.PlayOneShot(shootSound, .5f);
     }
     public void PlayReloadSound()
     {
@@ -32,6 +32,6 @@ public class AudioController : MonoBehaviour
     }
     public void PlayReloadVoiceSound()
     {
-        audioSource.PlayOneShot(reloadSound);
+        audioSource.PlayOneShot(reloadVoiceSound);
     }
 }
