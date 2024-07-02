@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    [SerializeField] private AudioController _audioController;
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _crossHair;
     [SerializeField] private int _bullets;
@@ -70,13 +71,14 @@ public class Combat : MonoBehaviour
         }
         _bullets--;
         _canvas.UpdateCanvas(5, _bullets);
+        _audioController.PlayShootSound();
     }
 
     public void Reload()
     {
         _bullets = 7;
         _canvas.UpdateCanvas(5, _bullets);
+        _audioController.PlayReloadSound();
     }
-
 
 }
