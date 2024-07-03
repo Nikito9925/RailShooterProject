@@ -16,6 +16,7 @@ public class EnemyZigZag : Enemy
 
     [SerializeField] private bool _hasKnives;
     [SerializeField] private GameObject _proyectile;
+    [SerializeField] private EnemyAudioController _audioController;
 
     public enum AttackMode
     {
@@ -155,18 +156,15 @@ public class EnemyZigZag : Enemy
         {
             case AttackMode.ZigZag:
                 Debug.Log("ATTACK ZIGZAG");
+                _audioController.PlayEnemyAttackSound();
                 _animator.SetTrigger("AttackPunch");
 
                 Invoke("GoBack", 1.5f);
                 break;
             case AttackMode.Knive:
                 Debug.Log("ATTACK KNIVE");
+                _audioController.PlayEnemyThrowSound();
                 _animator.SetTrigger("AttackKnive");
-
-                //if (_railController._enemyList.Contains(this))
-                //{
-                //    _railController._enemyList.Remove(this);
-                //}
 
                 Invoke("SwitchAttackMode", 1f);
                 _railController._cameraController.RemoveTarget();
@@ -178,6 +176,7 @@ public class EnemyZigZag : Enemy
 
     public override void Death()
     {
+        _audioController.PlayEnemyDeathSound();
         if (_railController._enemyList.Contains(this))
         {
             _railController._enemyList.Remove(this);
@@ -186,6 +185,8 @@ public class EnemyZigZag : Enemy
         {
             _nodeController._enemyList.Remove(this.gameObject);
         }
+
+        _agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.NoObstacleAvoidance;
 
         _standBy = true;
         _animator.SetTrigger("Death");

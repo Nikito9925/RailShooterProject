@@ -14,27 +14,13 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &-2283688720087440022
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 6aa210d05a202e340b7f05270fa8ee88
-  m_EffectName: Attenuation
-  m_MixLevel: ea627f9adf25db64daf5ad3bdbe323cd
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!243 &-10288424587274625
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_SFX
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f76bb1c92bc36e546932498075d33a14
   m_Children: []
@@ -62,13 +48,18 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 68f728d04580085469bbbc669ef7e962
+    name: MasterVolume
+  - guid: 741b72391b606524a8fb1bee5ff15923
+    name: MusicVolume
+  - guid: 4df1b657a2ef6da45a67723f1653ab74
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - 9d23aec961a0cc14dab54df70dff1037
     - b6780b5d9d829754a8dbf05b335e7beb
     - f76bb1c92bc36e546932498075d33a14
-    - cc29e1954b14d8849a7256df2d46336b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -84,7 +75,6 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 9188905071702694538}
   - {fileID: -10288424587274625}
-  - {fileID: 1842229061060479229}
   m_Volume: 68f728d04580085469bbbc669ef7e962
   m_Pitch: 1b6a729145cd9944b913e9b17fb9a1b2
   m_Send: 00000000000000000000000000000000
@@ -119,25 +109,6 @@ AudioMixerSnapshotController:
   m_SnapshotID: 3b3e973e89b1f614fa0b186f7ba332d2
   m_FloatValues: {}
   m_TransitionOverrides: {}
---- !u!243 &1842229061060479229
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_SFX
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: cc29e1954b14d8849a7256df2d46336b
-  m_Children: []
-  m_Volume: 9645389c2a96bfd41912e352fa1492f4
-  m_Pitch: 2ee22b6f5fea3464c98174ba2a1a406c
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: -2283688720087440022}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!244 &6391629346291895994
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

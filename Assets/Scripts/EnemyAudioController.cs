@@ -10,6 +10,7 @@ public class EnemyAudioController : MonoBehaviour
     // Referencia al AudioSource
     private AudioSource audioSource;
     public List<AudioClip> attackSoundList;
+    public List<AudioClip> throwSoundList;
     public List<AudioClip> deathSoundList;
     public AudioClip damageSound;
 
@@ -24,11 +25,16 @@ public class EnemyAudioController : MonoBehaviour
     }   
     public void PlayEnemyAttackSound()
     {
-        audioSource.PlayOneShot(attackSoundList[(int)Random.Range(0,2)]);
+        audioSource.PlayOneShot(attackSoundList[(int)Random.Range(0,attackSoundList.Count)]);
+    }
+
+    public void PlayEnemyThrowSound()
+    {
+        audioSource.PlayOneShot(throwSoundList[(int)Random.Range(0, throwSoundList.Count)]);
     }
     public void PlayEnemyDeathSound()
     {
-        audioSource.PlayOneShot(deathSoundList[(int)Random.Range(0, 2)]);
+        audioSource.PlayOneShot(deathSoundList[(int)Random.Range(0, deathSoundList.Count)]);
     }
     public void PlayEnemyDamageSound()
     {
