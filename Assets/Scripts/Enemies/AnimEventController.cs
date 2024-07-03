@@ -14,4 +14,9 @@ public class AnimEventController : MonoBehaviour
     {
         
     }
+
+    public void DoDamage()
+    {
+        _enemy._player.GetComponent<Player>().DoDamage();
+    }
 }

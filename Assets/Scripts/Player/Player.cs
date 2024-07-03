@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("Values")]
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
+    [SerializeField] public int _life;
 
     [Header("References")]
     [SerializeField] private Camera _camera;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] public Movement _movement;
     [SerializeField] public CameraController _cameraController;
+    [SerializeField] public CanvasController _canvas;
 
 
 
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     {
         if(_agent == null) _agent = GetComponent<NavMeshAgent>();
         _movement = new Movement(_walkSpeed, _runSpeed, _agent);
+        _life = 5;
     }
 
     void Update()
@@ -32,5 +35,11 @@ public class Player : MonoBehaviour
         {
             //_cameraController.Shoot();
         }
+    }
+
+    public void DoDamage()
+    {
+        _life--;
+        _canvas.UpdateCanvas(_life, GetComponent<Combat>()._bullets);
     }
 }

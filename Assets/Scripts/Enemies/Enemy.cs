@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected ParticleSystem _bloodImpact;
 
     [Header("Player")]
-    [SerializeField] protected Transform _player;
+    [SerializeField] public Transform _player;
 
     [Header("Bools")]
     [SerializeField] protected bool _standBy;

@@ -8,7 +8,7 @@ public class Combat : MonoBehaviour
     [SerializeField] private AudioController _audioController;
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _crossHair;
-    [SerializeField] private int _bullets;
+    [SerializeField] public int _bullets;
 
     [SerializeField] private CanvasController _canvas;
 
@@ -71,7 +71,7 @@ public class Combat : MonoBehaviour
 
         }
         _bullets--;
-        _canvas.UpdateCanvas(5, _bullets);
+        _canvas.UpdateCanvas(GetComponent<Player>()._life, _bullets);
         _audioController.PlayShootSound();
         if(_bullets <= 0) _audioController.PlayReloadVoiceSound();
     }
@@ -79,7 +79,7 @@ public class Combat : MonoBehaviour
     public void Reload()
     {
         _bullets = 7;
-        _canvas.UpdateCanvas(5, _bullets);
+        _canvas.UpdateCanvas(GetComponent<Player>()._life, _bullets);
         _audioController.PlayReloadSound();
     }
 
