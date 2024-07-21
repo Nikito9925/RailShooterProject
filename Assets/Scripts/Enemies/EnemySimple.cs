@@ -58,6 +58,7 @@ public class EnemySimple : Enemy
                 break;
         }
 
+
         if (_life <= 0 && !_isDeath)
         {
             //Debug.Log("LIFE == 0");

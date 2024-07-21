@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -73,6 +70,8 @@ public abstract class Enemy : MonoBehaviour
         _bodyParts = new Dictionary<EnemyPart, Collider>();
     }
 
+    
+
     public abstract void UpdateState();                           //Condiciones para cada estado del State Machine
 
     public abstract void Attack();
@@ -108,7 +107,7 @@ public abstract class Enemy : MonoBehaviour
                 break;
             case EnemyPart.Chest: case EnemyPart.Abs:
                 _life -= 2;
-                if (_life < 4) DeleteBodyPart(bodyPart);
+                if (_life < 0) DeleteBodyPart(bodyPart);
 
                 break;
             case EnemyPart.Pelvis:
@@ -142,6 +141,12 @@ public abstract class Enemy : MonoBehaviour
         }
 
         HitEffect(hit);
+        if(_life > 0 )
+        {
+            _animator.SetFloat("HitMode", Random.Range(0f, 1f));                        //En caso de querer mezclar las animaciones para q no se tan repetitivo
+            //_animator.SetFloat("HitMode", .5f);                                       //Usar el random range, sino setear .5 para la default
+            _animator.SetTrigger("GetHit");
+        }
 
         /*
         if(_bodyParts.ContainsKey(bodyPart))

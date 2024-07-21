@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         if(_agent == null) _agent = GetComponent<NavMeshAgent>();
         _movement = new Movement(_walkSpeed, _runSpeed, _agent);
-        _life = 5;
+        //_life = 5;
     }
 
     void Update()

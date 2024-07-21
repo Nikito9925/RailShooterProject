@@ -193,11 +193,11 @@ MonoBehaviour:
   _speed: 1
   _life: 0
   _focusTarget: {fileID: 141732441470334675}
-  _animator: {fileID: 0}
-  _agent: {fileID: 0}
+  _animator: {fileID: 7741605942762119595}
+  _agent: {fileID: 4119609389637460472}
   _railController: {fileID: 0}
   _nodeController: {fileID: 0}
-  _animEvent: {fileID: 0}
+  _animEvent: {fileID: 8603886401777846087}
   _bloodParticle: {fileID: 3650718699029295680, guid: d728a3034d22de84f9b36799882b24b8, type: 3}
   _bloodImpact: {fileID: 3650718699029295680, guid: 712905cd1ec2c59468ac2beff6497dd1, type: 3}
   _player: {fileID: 0}
