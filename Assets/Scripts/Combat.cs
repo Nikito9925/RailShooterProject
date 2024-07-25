@@ -49,6 +49,7 @@ public class Combat : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000f, LayerMask.GetMask("EnemyCollider")))
         {
+
             Enemy enemy = hit.collider.gameObject.GetComponentInParent<Enemy>();
             ShieldController shield = hit.collider.gameObject.GetComponent<ShieldController>();
 
