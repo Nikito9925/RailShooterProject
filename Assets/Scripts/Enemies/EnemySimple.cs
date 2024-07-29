@@ -90,7 +90,7 @@ public class EnemySimple : Enemy
         _standBy = true;
         _animator.SetTrigger("Death");
 
-        Invoke("DestroyEnemy", 3f);
+        //Invoke("DestroyEnemy", 3f);
 
     }
 

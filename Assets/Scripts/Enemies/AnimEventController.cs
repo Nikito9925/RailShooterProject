@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimEventController : MonoBehaviour
@@ -8,13 +9,26 @@ public class AnimEventController : MonoBehaviour
         _enemy.Shoot();
     }
 
-    public void Death()
+    public void StartDeath()
     {
-        
+        StartCoroutine(Death());
     }
 
     public void DoDamage()
     {
         _enemy._player.GetComponent<Player>().DoDamage();
+    }
+
+    public IEnumerator Death()
+    {
+        _enemy._bloodPuddle.SetActive(true);
+        _enemy._agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.NoObstacleAvoidance;
+
+        yield return new WaitForSeconds(2);
+
+        _enemy._bloodPuddle.GetComponent<Animator>().SetTrigger("Despawn");
+        _enemy._bloodPuddle.transform.SetParent(null);
+        Destroy(_enemy.gameObject);
+
     }
 }

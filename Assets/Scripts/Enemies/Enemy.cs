@@ -12,12 +12,13 @@ public abstract class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform _focusTarget;     //A donde focusea la camara cuando el enemigo ataca
     [SerializeField] protected Animator _animator;
-    [SerializeField] protected NavMeshAgent _agent;
+    [SerializeField] public NavMeshAgent _agent;
     [SerializeField] protected RailShooterController _railController;
     [SerializeField] protected NodeController _nodeController;      //Referencia del nodo, en caso de que el enemigo spawne por evento
     [SerializeField] protected AnimEventController _animEvent;
     [SerializeField] protected ParticleSystem _bloodParticle;
     [SerializeField] protected ParticleSystem _bloodImpact;
+    [SerializeField] public GameObject _bloodPuddle;
 
     [Header("Player")]
     [SerializeField] public Transform _player;
