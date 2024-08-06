@@ -23182,6 +23182,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &706228517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7389198104031350799, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+  m_PrefabInstance: {fileID: 6828126242826893662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d20d986b31029747a66d26acc0eb603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &706228519 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4557001027480270082, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+  m_PrefabInstance: {fileID: 6828126242826893662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &713347179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33827,6 +33843,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1649c881f8aafc348aab76b314cacba8, type: 3}
   m_PrefabInstance: {fileID: 1213052905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1215578518 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1816734085453115776, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+  m_PrefabInstance: {fileID: 6828126242826893662}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1219697292 stripped
 Transform:
@@ -60835,6 +60856,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4872039276940804504, guid: 53407f8a51df51549af79e6a26336527, type: 3}
   m_PrefabInstance: {fileID: 6828126242826893662}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &384350419563438445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8070521320976863685, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+  m_PrefabInstance: {fileID: 6828126242826893662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384350419563438444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddafbf2814ebc544b04ab7e9de3e3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &384350419563438448 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 4068455915584631815, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+  m_PrefabInstance: {fileID: 6828126242826893662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &384350419563438450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384350419563438444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da89352634c80fa44845dccf3aafaa91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minDistance: 2
+  _speed: 2
+  _life: 0
+  _focusTarget: {fileID: 1215578518}
+  _animator: {fileID: 706228519}
+  _agent: {fileID: 384350419563438448}
+  _railController: {fileID: 2085396954}
+  _nodeController: {fileID: 0}
+  _animEvent: {fileID: 706228517}
+  _bloodParticle: {fileID: 3650718699029295680, guid: d728a3034d22de84f9b36799882b24b8, type: 3}
+  _bloodImpact: {fileID: 3650718699029295680, guid: 712905cd1ec2c59468ac2beff6497dd1, type: 3}
+  _bloodPuddle: {fileID: 0}
+  _player: {fileID: 2085396951}
+  _standBy: 0
+  _isWalking: 0
+  _isDeath: 0
+  _enemyState: 0
+  _audioController: {fileID: 384350419563438445}
 --- !u!4 &409239924514816863
 Transform:
   m_ObjectHideFlags: 0
@@ -72374,10 +72441,14 @@ PrefabInstance:
       propertyPath: _railController
       value: 
       objectReference: {fileID: 2085396954}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6104668558252097832, guid: 53407f8a51df51549af79e6a26336527, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4872039276940804504, guid: 53407f8a51df51549af79e6a26336527, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 384350419563438450}
   m_SourcePrefab: {fileID: 100100000, guid: 53407f8a51df51549af79e6a26336527, type: 3}
 --- !u!4 &6830772604791349849
 Transform:
