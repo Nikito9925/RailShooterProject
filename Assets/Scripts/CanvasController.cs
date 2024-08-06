@@ -5,6 +5,7 @@ public class CanvasController : MonoBehaviour
 {
     [SerializeField] private Image _healthBar;
     [SerializeField] private Image _bulletBar;
+    [SerializeField] private Image _bossBar;
     [SerializeField] private Image _reload;
 
     [SerializeField] private float _maxHealth;
@@ -17,5 +18,15 @@ public class CanvasController : MonoBehaviour
 
         if(newBullets <= 0) _reload.gameObject.SetActive(true);
         else _reload.gameObject.SetActive(false);
+    }
+
+    public void UpdateBossCanvas(int newHealth, int maxHealth)
+    {
+        _bossBar.fillAmount = (float)(newHealth) / maxHealth;
+    }
+
+    public void EnableBoss(bool xd)
+    {
+        _bossBar.gameObject.SetActive(xd);
     }
 }
