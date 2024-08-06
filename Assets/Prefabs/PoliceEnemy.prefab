@@ -826,7 +826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76957084147230515}
   - component: {fileID: 4068455915584631815}
-  - component: {fileID: 6104668558252097832}
+  - component: {fileID: 8692148088878839745}
   - component: {fileID: 3270809674957161829}
   - component: {fileID: 8070521320976863685}
   m_Layer: 0
@@ -835,7 +835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &76957084147230515
 Transform:
   m_ObjectHideFlags: 0
@@ -875,7 +875,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6104668558252097832
+--- !u!114 &8692148088878839745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4872039276940804504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36033714eab68184f9d851b9203db77b, type: 3}
+  m_Script: {fileID: 11500000, guid: da89352634c80fa44845dccf3aafaa91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistance: 2
@@ -898,12 +898,14 @@ MonoBehaviour:
   _animEvent: {fileID: 7389198104031350799}
   _bloodParticle: {fileID: 3650718699029295680, guid: d728a3034d22de84f9b36799882b24b8, type: 3}
   _bloodImpact: {fileID: 3650718699029295680, guid: 712905cd1ec2c59468ac2beff6497dd1, type: 3}
+  _bloodPuddle: {fileID: 0}
   _player: {fileID: 0}
   _standBy: 0
   _isWalking: 0
   _isDeath: 0
   _enemyState: 0
   _audioController: {fileID: 8070521320976863685}
+  explosionPrefab: {fileID: 917687132540162523, guid: 792333bb51c478d4f99e6bdcf3829440, type: 3}
 --- !u!82 &3270809674957161829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1783,7 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d20d986b31029747a66d26acc0eb603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 6104668558252097832}
+  _enemy: {fileID: 0}
 --- !u!1 &7313055773233702513
 GameObject:
   m_ObjectHideFlags: 0

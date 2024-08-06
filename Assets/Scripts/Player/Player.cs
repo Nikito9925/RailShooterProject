@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public void DoDamage()
     {
+        Debug.Log("Se recibio Daño");
         _life--;
         _canvas.UpdateCanvas(_life, GetComponent<Combat>()._bullets);
     }

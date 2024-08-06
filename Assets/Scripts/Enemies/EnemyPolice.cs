@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyPolice : Enemy
 {
     [SerializeField] private EnemyAudioController _audioController;
+    [SerializeField] private GameObject explosionPrefab;
+    public Player player;
     private void Start()
     {
         _isDeath = false;
@@ -31,7 +33,7 @@ public class EnemyPolice : Enemy
         _animator.SetBool("Walking", _isWalking);
         UpdateState();
 
-        switch(_enemyState)
+        switch (_enemyState)
         {
             case EnemyState.Inactive:
 
@@ -51,7 +53,7 @@ public class EnemyPolice : Enemy
                 _agent.speed = 0;
                 _agent.SetDestination(_player.position);
                 _isWalking = false;
-                if(!_railController._enemyList.Contains(this))
+                if (!_railController._enemyList.Contains(this))
                 {
                     _railController._enemyList.Add(this);
                 }
@@ -87,10 +89,29 @@ public class EnemyPolice : Enemy
             _nodeController._enemyList.Remove(this.gameObject);
         }
 
+        /*Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (player != null)
+        {
+            player.DoDamage();
+        }*/
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        float maxDistance = 3f;
+
+        if (distanceToPlayer <= maxDistance)
+        {
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            if (player != null)
+            {
+                player.DoDamage();
+            }
+        }
+
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         _standBy = true;
         _animator.SetTrigger("Death");
 
-        //Invoke("DestroyEnemy", 3f);
+        Destroy(explosionPrefab, 3f); // Cambia el tiempo según tus necesidades
+        Invoke("DestroyEnemy", 2f);
 
     }
 
