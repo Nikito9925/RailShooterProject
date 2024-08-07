@@ -34,6 +34,7 @@ public class Proyectile : MonoBehaviour
         {
             Debug.Log("LOLOLOOLOLL");
             Destroy(gameObject);
+            other.gameObject.GetComponent<Player>().DoDamage();
         }
     }
 }
