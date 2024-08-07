@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyBoss : Enemy
 {
     [SerializeField] private EnemyAudioController _audioController;
+    [SerializeField] private Vector3 _originalPos;
+    [SerializeField] private bool _goBack;
 
     [SerializeField] CanvasController _canvas;
     private void Start()
@@ -53,6 +55,21 @@ public class EnemyBoss : Enemy
                 }
                 break;
             case EnemyState.WaitForAttack:
+
+                if(_goBack && _agent.remainingDistance > .1f)
+                {
+                    transform.forward = Vector3.Lerp(transform.forward, (_player.position - transform.position).normalized, .95f * Time.deltaTime * 15f);
+                }
+
+                if (_goBack && _agent.remainingDistance < .1f)                   //Si estoy volviendo para atras, y llego al punto.
+                {
+                    _goBack = false;
+                    _agent.SetDestination(transform.position);
+                    _agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.MedQualityObstacleAvoidance;
+                    _enemyState = EnemyState.Walking;
+                    //_railController._cameraController.RemoveTarget();
+                }
+
                 _agent.speed = 0;
                 _agent.SetDestination(_player.position);
                 _isWalking = false;
@@ -78,6 +95,7 @@ public class EnemyBoss : Enemy
         _animator.SetTrigger("Attack");
         Debug.Log("Enemy Attack");
         _audioController.PlayEnemyAttackSound();
+        _goBack = !_goBack;
     }
 
     public override void Death()
@@ -166,6 +184,24 @@ public class EnemyBoss : Enemy
 
 
         _canvas.UpdateBossCanvas((int)_life, 200);
+    }
+
+    public void GoBack()
+    {
+        //_onZigZag = false;
+        _goBack = true;
+        _agent.speed = 5f;
+        _agent.acceleration = 8f;
+        _agent.updateRotation = false;
+
+        //DeleteZigZagPath();
+
+        _agent.SetDestination(_originalPos);
+
+        if (_railController._enemyList.Contains(this))
+        {
+            _railController._enemyList.Remove(this);
+        }
     }
 
 }
