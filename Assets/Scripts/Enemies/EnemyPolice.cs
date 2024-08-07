@@ -63,7 +63,6 @@ public class EnemyPolice : Enemy
 
         if (_life <= 0 && !_isDeath)
         {
-            //Debug.Log("LIFE == 0");
             _isDeath = true;
             Death();
         }
@@ -84,7 +83,7 @@ public class EnemyPolice : Enemy
         {
             _railController._enemyList.Remove(this);
         }
-        if (_nodeController != null && _nodeController._enemyList.Contains(this.gameObject)) //Si pertenece a un nodo, y esta en la lista
+        if (_nodeController != null && _nodeController._enemyList.Contains(this.gameObject))
         {
             _nodeController._enemyList.Remove(this.gameObject);
         }
@@ -110,7 +109,7 @@ public class EnemyPolice : Enemy
         _standBy = true;
         _animator.SetTrigger("Death");
 
-        Destroy(explosionPrefab, 3f); // Cambia el tiempo según tus necesidades
+        Destroy(explosionPrefab, 3f);
         Invoke("DestroyEnemy", 2f);
 
     }
